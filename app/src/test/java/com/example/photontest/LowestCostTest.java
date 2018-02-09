@@ -39,4 +39,10 @@ public class LowestCostTest {
         assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());
     }
 
+    @Test
+    public void testSample15_moreThanMaxCols() {
+        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_15_INPUT);
+        assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());
+    }
+
 }
