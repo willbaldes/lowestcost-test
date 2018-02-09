@@ -39,6 +39,7 @@ public class LowestCost {
     private Result processPaths() {
         Result result = null;
         int entry = findEntryPoint();
+        boolean isValid = true;
         if(entry >= 0) {
             path[0] = entry + 1;
             cost = costMatrix[entry][0];
@@ -49,11 +50,11 @@ public class LowestCost {
                     cost = tempSum;
                     path[cols] = entry + 1;
                 } else {
-                    result = new Result(cost, path, false);
+                    isValid = false;
                     break;
                 }
             }
-            result = new Result(cost, path, true);
+            result = new Result(cost, path, isValid);
         } else {
             result = new Result(0, null, false);
         }

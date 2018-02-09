@@ -38,10 +38,18 @@ public final class Constants {
                 {8, 4, 1, 3, 2, 6},
                 {3, 7, 2, 1, 2, 3}
         };
-
         public static final String SAMPLE_2_VALID = "YES";
         public static final int SAMPLE_2_COST = 11;
         public static final String SAMPLE_2_PATH = "[1, 2, 1, 5, 4, 5]";
+
+        public static final Object[][] SAMPLE_3_INPUT = {
+                {19, 10, 19, 10, 19},
+                {21, 23, 20, 19, 12},
+                {20, 12, 20, 11, 10}
+        };
+        public static final String SAMPLE_3_VALID = "NO";
+        public static final int SAMPLE_3_COST = 48;
+        public static final String SAMPLE_3_PATH = "[1, 1, 1]";
 
         public static final Object[][] SAMPLE_6_INPUT = {
                 {5, 4, "H", 2, 5},

@@ -28,6 +28,14 @@ public class LowestCostTest {
     }
 
     @Test
+    public void testSample3() {
+        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_3_INPUT);
+        assertEquals(Samples.SAMPLE_3_VALID, result.isValid());
+        assertEquals(Samples.SAMPLE_3_COST, result.getCost());
+        assertEquals(Samples.SAMPLE_3_PATH, result.getPath());
+    }
+
+    @Test
     public void testSample6_badInput() {
         Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_6_INPUT);
         assertEquals(ResultCode.ERROR_INPUT, result.getErrorCode());

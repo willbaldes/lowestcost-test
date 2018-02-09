@@ -22,28 +22,23 @@ public class Result {
         return cost;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
-
     public String getPath() {
         if(path != null) {
-            return Arrays.toString(path);
+            int j = 0;
+            for( int i=0;  i<path.length;  i++ ) {
+                if (path[i] != 0)
+                    path[j++] = path[i];
+            }
+            int [] newArray = new int[j];
+            System.arraycopy(path, 0, newArray, 0, j );
+            return Arrays.toString(newArray);
         } else {
             return "[]";
         }
     }
 
-    public void setPath(int[] path) {
-        this.path = path;
-    }
-
     public String isValid() {
         return isValid ? "YES" : "NO";
-    }
-
-    public void setValid(boolean valid) {
-        isValid = valid;
     }
 
     public int getErrorCode() {
