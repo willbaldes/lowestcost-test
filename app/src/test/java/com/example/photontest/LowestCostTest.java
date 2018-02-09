@@ -2,8 +2,8 @@ package com.example.photontest;
 
 import com.example.photontest.model.LowestCost;
 import com.example.photontest.model.Result;
-import com.example.photontest.util.Constants.Samples;
 import com.example.photontest.util.Constants.ResultCode;
+import com.example.photontest.util.Constants.Samples;
 
 import org.junit.After;
 import org.junit.Before;
