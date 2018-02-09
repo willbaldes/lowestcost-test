@@ -31,6 +31,18 @@ public final class Constants {
         public static final int SAMPLE_1_COST = 16;
         public static final String SAMPLE_1_PATH = "[1, 2, 3, 4, 4, 5]";
 
+        public static final Object[][] SAMPLE_2_INPUT = {
+                {3, 4, 1, 2, 8, 6},
+                {6, 1, 8, 2, 7, 4},
+                {5, 9, 3, 9, 9, 5},
+                {8, 4, 1, 3, 2, 6},
+                {3, 7, 2, 1, 2, 3}
+        };
+
+        public static final String SAMPLE_2_VALID = "YES";
+        public static final int SAMPLE_2_COST = 11;
+        public static final String SAMPLE_2_PATH = "[1, 2, 1, 5, 4, 5]";
+
         public static final Object[][] SAMPLE_6_INPUT = {
                 {5, 4, "H", 2, 5},
                 {8, "M", 7, 1, 6},
@@ -47,6 +59,20 @@ public final class Constants {
 
         public static final Object[][] SAMPLE_15_INPUT = {
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+        };
+
+        public static final Object[][] SAMPLE_16_INPUT = {
+                {1},
+                {2},
+                {3},
+                {4},
+                {5},
+                {6},
+                {7},
+                {8},
+                {9},
+                {0},
+                {1}
         };
     }
 }

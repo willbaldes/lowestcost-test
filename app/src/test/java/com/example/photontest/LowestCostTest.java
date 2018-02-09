@@ -21,20 +21,20 @@ public class LowestCostTest {
 
     @Test
     public void testSample2() {
-        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_1_INPUT);
-        assertEquals(Samples.SAMPLE_1_VALID, result.isValid());
-        assertEquals(Samples.SAMPLE_1_COST, result.getCost());
-        assertEquals(Samples.SAMPLE_1_PATH, result.getPath());
+        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_2_INPUT);
+        assertEquals(Samples.SAMPLE_2_VALID, result.isValid());
+        assertEquals(Samples.SAMPLE_2_COST, result.getCost());
+        assertEquals(Samples.SAMPLE_2_PATH, result.getPath());
     }
 
     @Test
-    public void testSample6() {
+    public void testSample6_badInput() {
         Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_6_INPUT);
         assertEquals(ResultCode.ERROR_INPUT, result.getErrorCode());
     }
 
     @Test
-    public void testSample7_NoInputOrLessThanMinRows() {
+    public void testSample7_noInputOrLessThanMinRows() {
         Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_7_INPUT);
         assertEquals(ResultCode.ERROR_EMPTY, result.getErrorCode());
     }
@@ -49,6 +49,12 @@ public class LowestCostTest {
     public void testSample15_moreThanMaxCols() {
         Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_15_INPUT);
         assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());
+    }
+
+    @Test
+    public void testSample16_moreThanMaxRows() {
+        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_16_INPUT);
+        assertEquals(ResultCode.ERROR_ROWS, result.getErrorCode());
     }
 
 }

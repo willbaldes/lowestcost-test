@@ -7,6 +7,8 @@ public class LowestCost {
 
     private int[][] costMatrix;
     private int ROWS, COLS;
+    private int[] path;
+    private int cost;
 
     public Result calculateLowestCost(Object[][] inputMatrix) {
         Result result;
@@ -35,13 +37,64 @@ public class LowestCost {
     }
 
     private Result processPaths() {
-        return null;
+        Result result = null;
+        int entry = findEntryPoint();
+        if(entry >= 0) {
+            path[0] = entry + 1;
+            cost = costMatrix[entry][0];
+            for (int cols = 1; cols < COLS; cols++) {
+                entry = findNextMin(entry, cols);
+                int tempSum = cost + costMatrix[entry][cols];
+                if (tempSum <= 50) {
+                    cost = tempSum;
+                    path[cols] = entry + 1;
+                } else {
+                    result = new Result(cost, path, false);
+                    break;
+                }
+            }
+            result = new Result(cost, path, true);
+        } else {
+            result = new Result(0, null, false);
+        }
+        return result;
+    }
+
+    private int findNextMin(int entry, int cols) {
+        int index = 0;
+        int topRightIndex = entry - 1 < 0 ? ROWS - 1 : entry - 1;
+        int bottomRightIndex = entry + 1 == ROWS ? 0 : entry + 1;
+        int topRight = costMatrix[topRightIndex][cols];
+        int right = costMatrix[entry][cols];
+        int bottomRight = costMatrix[bottomRightIndex][cols];
+        if(topRight <= right && topRight < bottomRight) {
+            index = topRightIndex;
+        }
+        if(right < topRight && right < bottomRight) {
+            index = entry;
+        }
+        if(bottomRight<topRight && bottomRight < right) {
+            index = bottomRightIndex;
+        }
+        return index;
+    }
+
+    private int findEntryPoint(){
+        int index = -1;
+        int min = DomainSpecs.MAX_COST;
+        for(int i = 0; i<ROWS; i++) {
+            if(costMatrix[i][0] < min) {
+                min = costMatrix[i][0];
+                index = i;
+            }
+        }
+        return index;
     }
 
     private int validateInput(Object[][] inputMatrix) {
         if(inputMatrix != null) {
             ROWS = inputMatrix.length;
-            if(ROWS < DomainSpecs.MIN_ROWS || ROWS > DomainSpecs.MAX_ROWS) {
+            if(ROWS > DomainSpecs.MAX_ROWS) {
                 return ResultCode.ERROR_ROWS;
             }
             COLS = inputMatrix[0].length;
@@ -50,6 +103,7 @@ public class LowestCost {
             }
             try {
                 costMatrix = new int[ROWS][COLS];
+                path = new int[COLS];
                 for (int rows = 0; rows < ROWS; rows++) {
                     for (int cols = 0; cols < COLS; cols++) {
                         costMatrix[rows][cols] = (Integer) inputMatrix[rows][cols];

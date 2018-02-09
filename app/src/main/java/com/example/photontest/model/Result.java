@@ -1,5 +1,7 @@
 package com.example.photontest.model;
 
+import java.util.Arrays;
+
 public class Result {
     private int cost;
     private int[] path;
@@ -24,8 +26,12 @@ public class Result {
         this.cost = cost;
     }
 
-    public int[] getPath() {
-        return path;
+    public String getPath() {
+        if(path != null) {
+            return Arrays.toString(path);
+        } else {
+            return "[]";
+        }
     }
 
     public void setPath(int[] path) {
@@ -44,7 +50,4 @@ public class Result {
         return errorCode;
     }
 
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
 }
