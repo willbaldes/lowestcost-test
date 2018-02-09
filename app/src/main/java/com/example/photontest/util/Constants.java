@@ -3,7 +3,6 @@ package com.example.photontest.util;
 public final class Constants {
 
     public static class DomainSpecs {
-        public static final int MIN_ROWS = 1;
         public static final int MAX_ROWS = 10;
         public static final int MIN_COLS = 5;
         public static final int MAX_COLS = 100;

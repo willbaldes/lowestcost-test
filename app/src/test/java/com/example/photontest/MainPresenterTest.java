@@ -64,17 +64,25 @@ public class MainPresenterTest {
 
     @Test
     public void testErrorInvalidInputRows() {
-
+        testResult.setErrorCode(ResultCode.ERROR_ROWS);
+        when(resourceHelperMock.getStringError(testResult.getErrorCode())).thenReturn("ROWS");
+        presenter.calculateLowestCost(Samples.SAMPLE_16_INPUT);
+        verify(mainViewMock).showError("ROWS");
     }
 
     @Test
     public void testErrorInvalidInputColsLessThanMin() {
-
+        testResult.setErrorCode(ResultCode.ERROR_COLS);
+        when(resourceHelperMock.getStringError(testResult.getErrorCode())).thenReturn("COLS");
+        presenter.calculateLowestCost(Samples.SAMPLE_14_INPUT);
+        verify(mainViewMock).showError("COLS");
     }
 
     @Test
     public void testErrorInvalidInputColsMoreThanMax() {
-
+        testResult.setErrorCode(ResultCode.ERROR_COLS);
+        when(resourceHelperMock.getStringError(testResult.getErrorCode())).thenReturn("COLS");
+        presenter.calculateLowestCost(Samples.SAMPLE_15_INPUT);
     }
 
     @After
