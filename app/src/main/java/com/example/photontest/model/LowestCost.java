@@ -13,16 +13,7 @@ public class LowestCost {
         Result result;
         int resultCode = validateInput(inputMatrix);
         switch (resultCode) {
-            case ResultCode.ERROR_EMPTY:
-                result = new Result(resultCode);
-                break;
             case ResultCode.ERROR_INPUT:
-                result = new Result(resultCode);
-                break;
-            case ResultCode.ERROR_COLS:
-                result = new Result(resultCode);
-                break;
-            case ResultCode.ERROR_ROWS:
                 result = new Result(resultCode);
                 break;
             case ResultCode.RESULT_OK:
@@ -110,31 +101,20 @@ public class LowestCost {
     }
 
     private int validateInput(Object[][] inputMatrix) {
-        if(inputMatrix != null) {
-            ROWS = inputMatrix.length;
-            // TODO - REFACTOR TO PRESENTATION VALIDATION
-//            if(ROWS > DomainSpecs.MAX_ROWS) {
-//                return ResultCode.ERROR_ROWS;
-//            }
-            COLS = inputMatrix[0].length;
-//            if(COLS < DomainSpecs.MIN_COLS || COLS > DomainSpecs.MAX_COLS) {
-//                return ResultCode.ERROR_COLS;
-//            }
-            try {
-                costMatrix = new int[ROWS][COLS];
-                path = new int[COLS];
-                for (int rows = 0; rows < ROWS; rows++) {
-                    for (int cols = 0; cols < COLS; cols++) {
-                        costMatrix[rows][cols] = (Integer) inputMatrix[rows][cols];
-                    }
+        ROWS = inputMatrix.length;
+        COLS = inputMatrix[0].length;
+        try {
+            costMatrix = new int[ROWS][COLS];
+            path = new int[COLS];
+            for (int rows = 0; rows < ROWS; rows++) {
+                for (int cols = 0; cols < COLS; cols++) {
+                    costMatrix[rows][cols] = (Integer) inputMatrix[rows][cols];
                 }
-                return ResultCode.RESULT_OK;
-            } catch (ClassCastException e) {
-                e.printStackTrace();
-                return ResultCode.ERROR_INPUT;
             }
-        } else {
-            return ResultCode.ERROR_EMPTY;
+            return ResultCode.RESULT_OK;
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+            return ResultCode.ERROR_INPUT;
         }
     }
 
