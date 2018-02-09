@@ -4,6 +4,11 @@ public class Result {
     private int cost;
     private int[] path;
     private boolean isValid;
+    private int errorCode;
+
+    public Result(int errorCode) {
+        this.errorCode = errorCode;
+    }
 
     public Result(int cost, int[] path, boolean isValid) {
         this.cost = cost;
@@ -33,5 +38,13 @@ public class Result {
 
     public void setValid(boolean valid) {
         isValid = valid;
+    }
+
+    public int getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
     }
 }
