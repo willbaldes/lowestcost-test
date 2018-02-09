@@ -8,7 +8,6 @@ public class LowestCost {
     private int[][] costMatrix;
     private int ROWS, COLS;
     private int[] path;
-    private int cost;
 
     public Result calculateLowestCost(Object[][] inputMatrix) {
         Result result;
@@ -42,7 +41,7 @@ public class LowestCost {
         boolean isValid = true;
         if(entry >= 0) {
             path[0] = entry + 1;
-            cost = costMatrix[entry][0];
+            int cost = costMatrix[entry][0];
             for (int cols = 1; cols < COLS; cols++) {
                 entry = findNextMin(entry, cols);
                 int tempSum = cost + costMatrix[entry][cols];
@@ -68,13 +67,13 @@ public class LowestCost {
         int topRight = costMatrix[topRightIndex][cols];
         int right = costMatrix[entry][cols];
         int bottomRight = costMatrix[bottomRightIndex][cols];
-        if(topRight <= right && topRight <= bottomRight) {
+        if((topRight <= right) && (topRight <= bottomRight)) {
             index = topRightIndex;
         }
-        if(right < topRight && right < bottomRight) {
+        if((right < topRight) && (right < bottomRight)) {
             index = entry;
         }
-        if(bottomRight<topRight && bottomRight < right) {
+        if((bottomRight < topRight) && (bottomRight < right)) {
             index = bottomRightIndex;
         }
         return index;
@@ -93,10 +92,10 @@ public class LowestCost {
         if(COLS > 1 && index != -1) {
             int topRightIndex = index - 1 < 0 ? ROWS - 1 : index - 1;
             int bottomRightIndex = index + 1 == ROWS ? 0 : index + 1;
-            int a = costMatrix[topRightIndex][1];
-            int b = costMatrix[index][1];
-            int c = costMatrix[bottomRightIndex][1];
-            if (a >= DomainSpecs.MAX_COST && b >= DomainSpecs.MAX_COST && c >= DomainSpecs.MAX_COST) {
+            int topRight = costMatrix[topRightIndex][1];
+            int right = costMatrix[index][1];
+            int bottomRight = costMatrix[bottomRightIndex][1];
+            if (topRight >= DomainSpecs.MAX_COST && right >= DomainSpecs.MAX_COST && bottomRight >= DomainSpecs.MAX_COST) {
                 for (int i = 0; i < ROWS; i++) {
                     if (costMatrix[i][0] > min && costMatrix[i][0] < DomainSpecs.MAX_COST) {
                         min = costMatrix[i][0];
@@ -105,6 +104,7 @@ public class LowestCost {
                 }
             }
         }
+
         return index;
     }
 

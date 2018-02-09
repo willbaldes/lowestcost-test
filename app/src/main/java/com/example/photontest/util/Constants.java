@@ -116,6 +116,16 @@ public final class Constants {
         public static final int SAMPLE_11_COST = 10;
         public static final String SAMPLE_11_PATH = "[4, 4]";
 
+        public static final Object[][] SAMPLE_12_INPUT = {
+                {51, 51, 51},
+                {0, 51, 51},
+                {51, 51, 51},
+                {5, 5, 51}
+        };
+        public static final String SAMPLE_12_VALID = "NO";
+        public static final int SAMPLE_12_COST = 10;
+        public static final String SAMPLE_12_PATH = "[4, 4]";
+
         public static final Object[][] SAMPLE_13_INPUT = {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
