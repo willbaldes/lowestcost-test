@@ -8,8 +8,8 @@ public class Result {
     private boolean isValid;
     private int errorCode;
 
-    public Result(int errorCode) {
-        this.errorCode = errorCode;
+    public Result(){
+
     }
 
     public Result(int cost, int[] path, boolean isValid) {

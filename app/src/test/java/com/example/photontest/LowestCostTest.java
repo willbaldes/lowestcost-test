@@ -61,12 +61,6 @@ public class LowestCostTest {
     }
 
     @Test
-    public void testSample7_noInputOrLessThanMinRows() {
-        result = lowestCost.calculateLowestCost(Samples.SAMPLE_7_INPUT);
-        assertEquals(ResultCode.ERROR_EMPTY, result.getErrorCode());
-    }
-
-    @Test
     public void testSample8() {
         result = lowestCost.calculateLowestCost(Samples.SAMPLE_8_INPUT);
         assertEquals(Samples.SAMPLE_8_VALID, result.isValid());
@@ -113,27 +107,6 @@ public class LowestCostTest {
         assertEquals(Samples.SAMPLE_13_COST, result.getCost());
         assertEquals(Samples.SAMPLE_13_PATH, result.getPath());
     }
-
-    // TODO - Refactor to presentation validation
-//    @Test
-//    public void testSample14_lessThanMinCols() {
-//        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_14_INPUT);
-//        assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());
-//    }
-
-    // TODO - Refactor to presentation validation
-//    @Test
-//    public void testSample15_moreThanMaxCols() {
-//        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_15_INPUT);
-//        assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());
-//    }
-
-    // TODO - Refactor to presentation validation
-//    @Test
-//    public void testSample16_moreThanMaxRows() {
-//        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_16_INPUT);
-//        assertEquals(ResultCode.ERROR_ROWS, result.getErrorCode());
-//    }
 
     @After
     public void tearDown() {

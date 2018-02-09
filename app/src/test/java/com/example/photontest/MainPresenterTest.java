@@ -33,6 +33,7 @@ public class MainPresenterTest {
     @Before
     public void init() {
         presenter.bind();
+        testResult = new Result();
     }
 
     @Test
@@ -47,8 +48,7 @@ public class MainPresenterTest {
 
     @Test
     public void testErrorInvalidInput() {
-        testResult = new Result(ResultCode.ERROR_INPUT);
-        when(lowestCostMock.calculateLowestCost(Samples.SAMPLE_6_INPUT)).thenReturn(testResult);
+        testResult.setErrorCode(ResultCode.ERROR_INPUT);
         when(resourceHelperMock.getStringError(testResult.getErrorCode())).thenReturn("INPUT");
         presenter.calculateLowestCost(Samples.SAMPLE_6_INPUT);
         verify(mainViewMock).showError("INPUT");
@@ -56,8 +56,7 @@ public class MainPresenterTest {
 
     @Test
     public void testErrorEmptyInput() {
-        testResult = new Result(ResultCode.ERROR_EMPTY);
-        when(lowestCostMock.calculateLowestCost(Samples.SAMPLE_7_INPUT)).thenReturn(testResult);
+        testResult.setErrorCode(ResultCode.ERROR_EMPTY);
         when(resourceHelperMock.getStringError(ResultCode.ERROR_EMPTY)).thenReturn("EMPTY");
         presenter.calculateLowestCost(Samples.SAMPLE_7_INPUT);
         verify(mainViewMock).showError("EMPTY");

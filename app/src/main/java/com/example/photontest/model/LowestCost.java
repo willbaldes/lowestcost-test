@@ -14,13 +14,15 @@ public class LowestCost {
         int resultCode = validateInput(inputMatrix);
         switch (resultCode) {
             case ResultCode.ERROR_INPUT:
-                result = new Result(resultCode);
+                result = new Result();
+                result.setErrorCode(resultCode);
                 break;
             case ResultCode.RESULT_OK:
                 result = processPaths();
                 break;
             default:
-                result = new Result(ResultCode.ERROR_STATE);
+                result = new Result();
+                result.setErrorCode(ResultCode.ERROR_STATE);
         }
         return result;
 
