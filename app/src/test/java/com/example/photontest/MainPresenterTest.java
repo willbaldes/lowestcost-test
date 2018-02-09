@@ -43,7 +43,6 @@ public class MainPresenterTest {
         int path[] = {1, 2, 1, 5, 4, 5};
         boolean valid = true;
         Result succesValidResult = new Result(cost, path, valid);
-        when(lowestCostMock.calculateLowestCost(Samples.SAMPLE_2_INPUT)).thenReturn(succesValidResult);
         presenter.calculateLowestCost(Samples.SAMPLE_2_INPUT);
         verify(mainViewMock).showResult(argThat(new ResultMatcher(succesValidResult)));
     }
@@ -54,7 +53,6 @@ public class MainPresenterTest {
         int path[] = {1, 1, 1};
         boolean valid = false;
         Result succesValidResult = new Result(cost, path, valid);
-        when(lowestCostMock.calculateLowestCost(Samples.SAMPLE_3_INPUT)).thenReturn(succesValidResult);
         presenter.calculateLowestCost(Samples.SAMPLE_3_INPUT);
         verify(mainViewMock).showResult(argThat(new ResultMatcher(succesValidResult)));
     }

@@ -1,7 +1,7 @@
 package com.example.photontest.model;
 
-import com.example.photontest.util.Constants.ResultCode;
 import com.example.photontest.util.Constants.DomainSpecs;
+import com.example.photontest.util.Constants.ResultCode;
 
 public class LowestCost {
 
@@ -10,29 +10,24 @@ public class LowestCost {
     private int[] path;
 
     public Result calculateLowestCost(Object[][] inputMatrix) {
-        Result result;
+        Result result = new Result();
         int resultCode = validateInput(inputMatrix);
         switch (resultCode) {
             case ResultCode.ERROR_INPUT:
-                result = new Result();
                 result.setErrorCode(resultCode);
                 break;
             case ResultCode.RESULT_OK:
                 result = processPaths();
                 break;
-            default:
-                result = new Result();
-                result.setErrorCode(ResultCode.ERROR_STATE);
         }
         return result;
-
     }
 
     private Result processPaths() {
         Result result;
         int entry = findEntryPoint();
         boolean isValid = true;
-        if(entry >= 0) {
+        if (entry >= 0) {
             path[0] = entry + 1;
             int cost = costMatrix[entry][0];
             for (int cols = 1; cols < COLS; cols++) {
@@ -61,29 +56,29 @@ public class LowestCost {
         int topRight = costMatrix[topRightIndex][cols];
         int right = costMatrix[entry][cols];
         int bottomRight = costMatrix[bottomRightIndex][cols];
-        if((topRight <= right) && (topRight <= bottomRight)) {
+        if ((topRight <= right) && (topRight <= bottomRight)) {
             index = topRightIndex;
         }
-        if((right < topRight) && (right < bottomRight)) {
+        if ((right < topRight) && (right < bottomRight)) {
             index = entry;
         }
-        if((bottomRight < topRight) && (bottomRight < right)) {
+        if ((bottomRight < topRight) && (bottomRight < right)) {
             index = bottomRightIndex;
         }
         return index;
     }
 
-    private int findEntryPoint(){
+    private int findEntryPoint() {
         int index = -1;
         int min = DomainSpecs.MAX_COST;
-        for(int i = 0; i<ROWS; i++) {
-            if(costMatrix[i][0] < min) {
+        for (int i = 0; i < ROWS; i++) {
+            if (costMatrix[i][0] < min) {
                 min = costMatrix[i][0];
                 index = i;
             }
         }
 
-        if(COLS > 1 && index != -1) {
+        if (COLS > 1 && index != -1) {
             int topRightIndex = index - 1 < 0 ? ROWS - 1 : index - 1;
             int bottomRightIndex = index + 1 == ROWS ? 0 : index + 1;
             int topRight = costMatrix[topRightIndex][1];
