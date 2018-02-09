@@ -95,13 +95,14 @@ public class LowestCost {
     private int validateInput(Object[][] inputMatrix) {
         if(inputMatrix != null) {
             ROWS = inputMatrix.length;
-            if(ROWS > DomainSpecs.MAX_ROWS) {
-                return ResultCode.ERROR_ROWS;
-            }
+            // TODO - REFACTOR TO PRESENTATION VALIDATION
+//            if(ROWS > DomainSpecs.MAX_ROWS) {
+//                return ResultCode.ERROR_ROWS;
+//            }
             COLS = inputMatrix[0].length;
-            if(COLS < DomainSpecs.MIN_COLS || COLS > DomainSpecs.MAX_COLS) {
-                return ResultCode.ERROR_COLS;
-            }
+//            if(COLS < DomainSpecs.MIN_COLS || COLS > DomainSpecs.MAX_COLS) {
+//                return ResultCode.ERROR_COLS;
+//            }
             try {
                 costMatrix = new int[ROWS][COLS];
                 path = new int[COLS];

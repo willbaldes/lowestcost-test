@@ -51,6 +51,25 @@ public final class Constants {
         public static final int SAMPLE_3_COST = 48;
         public static final String SAMPLE_3_PATH = "[1, 1, 1]";
 
+        public static final Object[][] SAMPLE_4_INPUT = {
+                {5, 8, 5, 3, 5}
+        };
+        public static final String SAMPLE_4_VALID = "YES";
+        public static final int SAMPLE_4_COST = 26;
+        public static final String SAMPLE_4_PATH = "[1, 1, 1, 1, 1]";
+
+        public static final Object[][] SAMPLE_5_INPUT = {
+                {5},
+                {8},
+                {5},
+                {3},
+                {5}
+        };
+
+        public static final String SAMPLE_5_VALID = "YES";
+        public static final int SAMPLE_5_COST = 3;
+        public static final String SAMPLE_5_PATH = "[4]";
+
         public static final Object[][] SAMPLE_6_INPUT = {
                 {5, 4, "H", 2, 5},
                 {8, "M", 7, 1, 6},
@@ -58,6 +77,15 @@ public final class Constants {
         };
 
         public static final Object[][] SAMPLE_7_INPUT = null;
+
+        public static final Object[][] SAMPLE_8_INPUT = {
+                {69, 10, 19, 10, 19},
+                {51, 23, 20, 19, 12},
+                {60, 12, 20, 11, 10}
+        };
+        public static final String SAMPLE_8_VALID = "NO";
+        public static final int SAMPLE_8_COST = 0;
+        public static final String SAMPLE_8_PATH = "[]";
 
         public static final Object[][] SAMPLE_14_INPUT = {
                 {5, 4, "H"},
