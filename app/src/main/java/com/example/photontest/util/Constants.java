@@ -87,6 +87,15 @@ public final class Constants {
         public static final int SAMPLE_8_COST = 0;
         public static final String SAMPLE_8_PATH = "[]";
 
+        public static final Object[][] SAMPLE_9_INPUT = {
+                {60, 3, 3, 6},
+                {6, 3, 7, 9},
+                {5, 6, 8, 3}
+        };
+        public static final String SAMPLE_9_VALID = "YES";
+        public static final int SAMPLE_9_COST = 14;
+        public static final String SAMPLE_9_PATH = "[3, 2, 1, 3]";
+
         public static final Object[][] SAMPLE_14_INPUT = {
                 {5, 4, "H"},
                 {8, "M", 7},

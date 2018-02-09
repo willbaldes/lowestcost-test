@@ -68,7 +68,7 @@ public class LowestCost {
         int topRight = costMatrix[topRightIndex][cols];
         int right = costMatrix[entry][cols];
         int bottomRight = costMatrix[bottomRightIndex][cols];
-        if(topRight <= right && topRight < bottomRight) {
+        if(topRight <= right && topRight <= bottomRight) {
             index = topRightIndex;
         }
         if(right < topRight && right < bottomRight) {

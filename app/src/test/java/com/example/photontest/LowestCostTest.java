@@ -71,25 +71,33 @@ public class LowestCostTest {
         assertEquals(Samples.SAMPLE_8_PATH, result.getPath());
     }
 
-    // TODO - Refactor to presentation validation
     @Test
-    public void testSample14_lessThanMinCols() {
-        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_14_INPUT);
-        assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());
+    public void testSample9() {
+        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_9_INPUT);
+        assertEquals(Samples.SAMPLE_9_VALID, result.isValid());
+        assertEquals(Samples.SAMPLE_9_COST, result.getCost());
+        assertEquals(Samples.SAMPLE_9_PATH, result.getPath());
     }
 
     // TODO - Refactor to presentation validation
-    @Test
-    public void testSample15_moreThanMaxCols() {
-        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_15_INPUT);
-        assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());
-    }
+//    @Test
+//    public void testSample14_lessThanMinCols() {
+//        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_14_INPUT);
+//        assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());
+//    }
 
     // TODO - Refactor to presentation validation
-    @Test
-    public void testSample16_moreThanMaxRows() {
-        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_16_INPUT);
-        assertEquals(ResultCode.ERROR_ROWS, result.getErrorCode());
-    }
+//    @Test
+//    public void testSample15_moreThanMaxCols() {
+//        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_15_INPUT);
+//        assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());
+//    }
+
+    // TODO - Refactor to presentation validation
+//    @Test
+//    public void testSample16_moreThanMaxRows() {
+//        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_16_INPUT);
+//        assertEquals(ResultCode.ERROR_ROWS, result.getErrorCode());
+//    }
 
 }
