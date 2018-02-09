@@ -34,6 +34,12 @@ public class LowestCostTest {
     }
 
     @Test
+    public void testSample7_NoInputOrLessThanMinRows() {
+        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_7_INPUT);
+        assertEquals(ResultCode.ERROR_EMPTY, result.getErrorCode());
+    }
+
+    @Test
     public void testSample14_lessThanMinCols() {
         Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_14_INPUT);
         assertEquals(ResultCode.ERROR_COLS, result.getErrorCode());

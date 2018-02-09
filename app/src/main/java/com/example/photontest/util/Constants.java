@@ -37,6 +37,8 @@ public final class Constants {
                 {5, 7,   5, 3, 7}
         };
 
+        public static final Object[][] SAMPLE_7_INPUT = null;
+
         public static final Object[][] SAMPLE_14_INPUT = {
                 {5, 4, "H"},
                 {8, "M", 7},
