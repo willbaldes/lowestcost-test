@@ -87,6 +87,14 @@ public class LowestCostTest {
         assertEquals(Samples.SAMPLE_10_PATH, result.getPath());
     }
 
+    @Test
+    public void testSample11() {
+        Result result = lowestCost.calculateLowestCost(Samples.SAMPLE_11_INPUT);
+        assertEquals(Samples.SAMPLE_11_VALID, result.isValid());
+        assertEquals(Samples.SAMPLE_11_COST, result.getCost());
+        assertEquals(Samples.SAMPLE_11_PATH, result.getPath());
+    }
+
     // TODO - Refactor to presentation validation
 //    @Test
 //    public void testSample14_lessThanMinCols() {

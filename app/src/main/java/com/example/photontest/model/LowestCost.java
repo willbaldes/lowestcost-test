@@ -89,6 +89,22 @@ public class LowestCost {
                 index = i;
             }
         }
+
+        if(COLS > 1 && index != -1) {
+            int topRightIndex = index - 1 < 0 ? ROWS - 1 : index - 1;
+            int bottomRightIndex = index + 1 == ROWS ? 0 : index + 1;
+            int a = costMatrix[topRightIndex][1];
+            int b = costMatrix[index][1];
+            int c = costMatrix[bottomRightIndex][1];
+            if (a >= DomainSpecs.MAX_COST && b >= DomainSpecs.MAX_COST && c >= DomainSpecs.MAX_COST) {
+                for (int i = 0; i < ROWS; i++) {
+                    if (costMatrix[i][0] > min && costMatrix[i][0] < DomainSpecs.MAX_COST) {
+                        min = costMatrix[i][0];
+                        index = i;
+                    }
+                }
+            }
+        }
         return index;
     }
 
