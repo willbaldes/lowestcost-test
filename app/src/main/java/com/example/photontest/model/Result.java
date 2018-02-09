@@ -45,4 +45,7 @@ public class Result {
         return errorCode;
     }
 
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
+    }
 }

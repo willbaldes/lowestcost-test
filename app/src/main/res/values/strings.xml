@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Photon Test</string>
+    <string name="error_cols">Columns should be between 10 and 100</string>
+    <string name="error_rows">Rows should be between 1 and 10</string>
+    <string name="error_empty">Input can\'t be empty, please enter a numeric matrix</string>
+    <string name="error_input">Please enter only numbers for values</string>
+    <string name="error_state">An unexpected error occurred</string>
 </resources>

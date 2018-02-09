@@ -36,7 +36,7 @@ public class LowestCost {
     }
 
     private Result processPaths() {
-        Result result = null;
+        Result result;
         int entry = findEntryPoint();
         boolean isValid = true;
         if(entry >= 0) {
@@ -57,6 +57,7 @@ public class LowestCost {
         } else {
             result = new Result(0, null, false);
         }
+        result.setErrorCode(ResultCode.RESULT_OK);
         return result;
     }
 
