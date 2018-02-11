@@ -5,4 +5,9 @@
     <string name="error_empty">Input can\'t be empty, please enter a numeric matrix</string>
     <string name="error_input">Please enter only numbers for values</string>
     <string name="error_state">An unexpected error occurred</string>
+    <string name="lbl_main_title">Photon Test - Will Baldes</string>
+    <string name="lbl_main_instructions">Please enter a numeric matrix with each item separated by a space and every row with a new line.</string>
+    <string name="lbl_btn_reset">Reset</string>
+    <string name="lbl_btn_calculate">Calculate</string>
+    <string name="lbl_input_hint">Enter matrix here</string>
 </resources>
