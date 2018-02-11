@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -39,6 +40,16 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.desc_tv)).check(matches(withText(screenInstructions)));
         onView(withId(R.id.reset)).check(matches(not(isEnabled())));
         onView(withId(R.id.submit)).check(matches(isEnabled()));
+    }
+
+    /**
+     * Validate error on screen when user submits an empty input.
+     */
+    @Test
+    public void test_SubmitEmptyInputShouldShowError() {
+        String emptyError = getResourceString(R.string.error_empty);
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.error_tv)).check(matches(withText(emptyError)));
     }
 
     private String getResourceString(int id) {
