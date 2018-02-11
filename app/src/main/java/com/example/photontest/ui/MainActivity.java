@@ -19,10 +19,14 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
+    private static final String ROWS_DELIMITER = "";
+    private static final String COLS_DELIMITER = " ";
+
     @BindView(R.id.input_et) EditText inputET;
     @BindView(R.id.valid_tv) TextView validTV;
     @BindView(R.id.cost_tv) TextView costTV;
     @BindView(R.id.path_tv) TextView pathTV;
+    @BindView(R.id.error_tv) TextView errorTV;
 
     @Inject MainPresenter mainPresenter;
 
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void showError(String error) {
-
+        errorTV.setText(error);
     }
 
     @Override
@@ -57,12 +61,29 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @OnClick(R.id.submit) void calculate() {
-        // TODO Add validation then call
-        mainPresenter.calculateLowestCost(null);
+        mainPresenter.calculateLowestCost(parseInput());
     }
 
     @OnClick(R.id.reset) void reset() {
 
+    }
+
+    private Object[][] parseInput() {
+        String userInput = inputET.getText().toString();
+        Object[][] input;
+        if(userInput.isEmpty()) {
+            return null;
+        } else {
+            String[] rows = userInput.split(ROWS_DELIMITER);
+            int rowCount = rows.length;
+            int columnCount = rows[0].split(COLS_DELIMITER).length;
+            input = new Object[rowCount][columnCount];
+            for(int row = 0; row < rowCount; row++) {
+                Object[] items = rows[row].split(COLS_DELIMITER);
+                System.arraycopy(items, 0, input[row], 0, columnCount);
+            }
+            return input;
+        }
     }
 
     private void initDagger() {
