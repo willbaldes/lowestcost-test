@@ -19,7 +19,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
-    private static final String ROWS_DELIMITER = "";
+    private static final String ROWS_DELIMITER = "\n";
     private static final String COLS_DELIMITER = " ";
 
     @BindView(R.id.input_et) EditText inputET;

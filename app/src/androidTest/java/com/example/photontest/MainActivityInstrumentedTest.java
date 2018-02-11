@@ -44,12 +44,17 @@ public class MainActivityInstrumentedTest {
 
     /**
      * Validate error on screen when user submits an empty input.
+     * Should disable submit after click and re-enable after result
+     * Should enable reset button after submission.
      */
     @Test
     public void test_SubmitEmptyInputShouldShowError() {
         String emptyError = getResourceString(R.string.error_empty);
         onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.submit)).check(matches(not(isEnabled())));
         onView(withId(R.id.error_tv)).check(matches(withText(emptyError)));
+        onView(withId(R.id.reset)).check(matches(isEnabled()));
+        onView(withId(R.id.submit)).check(matches(isEnabled()));
     }
 
     private String getResourceString(int id) {
