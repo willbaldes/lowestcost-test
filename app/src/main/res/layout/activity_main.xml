@@ -51,6 +51,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:hint="@string/lbl_input_hint"
+        android:maxLines="10"
         android:ems="10"
         android:inputType="textMultiLine|numberSigned"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
