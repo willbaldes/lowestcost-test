@@ -98,6 +98,19 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.error_tv)).check(matches(withText(error)));
     }
 
+    @Test
+    public void test_SubmitValidLargeInputShouldShowResult() {
+        String valid = Samples.SAMPLE_13_VALID;
+        String cost = String.valueOf(Samples.SAMPLE_13_COST);
+        String path = Samples.SAMPLE_13_PATH;
+        onView(withId(R.id.input_et)).perform(click());
+        onView(withId(R.id.input_et)).perform(typeText(prepareInputgit lFromMatrix(Samples.SAMPLE_13_INPUT)), closeSoftKeyboard());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.valid_tv)).check(matches(withText(valid)));
+        onView(withId(R.id.cost_tv)).check(matches(withText(cost)));
+        onView(withId(R.id.path_tv)).check(matches(withText(path)));
+    }
+
     private String getResourceString(int id) {
         Context targetContext = InstrumentationRegistry.getTargetContext();
         return targetContext.getResources().getString(id);
