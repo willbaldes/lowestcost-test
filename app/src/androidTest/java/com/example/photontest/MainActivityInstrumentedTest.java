@@ -137,6 +137,19 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.path_tv)).check(matches(withText(path)));
     }
 
+    @Test
+    public void test_SubmitValidInputInvalidMatrixNoPathShouldShowResult() {
+        String valid = Samples.SAMPLE_8_VALID;
+        String cost = String.valueOf(Samples.SAMPLE_8_COST);
+        String path = Samples.SAMPLE_8_PATH;
+        onView(withId(R.id.input_et)).perform(click());
+        onView(withId(R.id.input_et)).perform(typeText(prepareInputFromMatrix(Samples.SAMPLE_8_INPUT)), closeSoftKeyboard());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.valid_tv)).check(matches(withText(valid)));
+        onView(withId(R.id.cost_tv)).check(matches(withText(cost)));
+        onView(withId(R.id.path_tv)).check(matches(withText(path)));
+    }
+
 
     private String getResourceString(int id) {
         Context targetContext = InstrumentationRegistry.getTargetContext();
