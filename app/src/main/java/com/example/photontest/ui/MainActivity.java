@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void showResult(Result result) {
         submitBT.setEnabled(true);
+        validTV.setText(result.isValid());
+        costTV.setText(String.valueOf(result.getCost()));
+        pathTV.setText(result.getPath());
     }
 
     @OnClick(R.id.submit) void calculate() {
