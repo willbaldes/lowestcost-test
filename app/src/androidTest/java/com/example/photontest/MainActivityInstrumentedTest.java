@@ -71,6 +71,15 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.error_tv)).check(matches(withText(error)));
     }
 
+    @Test
+    public void test_SubmitInvalidRowCountShouldShowError() {
+        String error = getResourceString(R.string.error_rows);
+        onView(withId(R.id.input_et)).perform(click());
+        onView(withId(R.id.input_et)).perform(typeText(prepareInputFromMatrix(Samples.SAMPLE_16_INPUT)), closeSoftKeyboard());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.error_tv)).check(matches(withText(error)));
+    }
+
     private String getResourceString(int id) {
         Context targetContext = InstrumentationRegistry.getTargetContext();
         return targetContext.getResources().getString(id);
