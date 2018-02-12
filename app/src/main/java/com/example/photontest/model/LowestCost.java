@@ -105,11 +105,14 @@ public class LowestCost {
             path = new int[COLS];
             for (int rows = 0; rows < ROWS; rows++) {
                 for (int cols = 0; cols < COLS; cols++) {
-                    costMatrix[rows][cols] = (Integer) inputMatrix[rows][cols];
-                }
+                    if(inputMatrix[rows][cols] instanceof String) {
+                        costMatrix[rows][cols] = Integer.parseInt((String) inputMatrix[rows][cols]);
+                    } else {
+                        costMatrix[rows][cols] = (Integer) inputMatrix[rows][cols];
+                }   }
             }
             return ResultCode.RESULT_OK;
-        } catch (ClassCastException e) {
+        } catch (ClassCastException | NumberFormatException e) {
             e.printStackTrace();
             return ResultCode.ERROR_INPUT;
         }

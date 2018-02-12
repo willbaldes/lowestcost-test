@@ -104,7 +104,7 @@ public class MainActivityInstrumentedTest {
         String cost = String.valueOf(Samples.SAMPLE_13_COST);
         String path = Samples.SAMPLE_13_PATH;
         onView(withId(R.id.input_et)).perform(click());
-        onView(withId(R.id.input_et)).perform(typeText(prepareInputgit lFromMatrix(Samples.SAMPLE_13_INPUT)), closeSoftKeyboard());
+        onView(withId(R.id.input_et)).perform(typeText(prepareInputFromMatrix(Samples.SAMPLE_13_INPUT)), closeSoftKeyboard());
         onView(withId(R.id.submit)).perform(click());
         onView(withId(R.id.valid_tv)).check(matches(withText(valid)));
         onView(withId(R.id.cost_tv)).check(matches(withText(cost)));
