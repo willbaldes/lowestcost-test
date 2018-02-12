@@ -54,7 +54,6 @@
         android:layout_marginTop="8dp"
         android:hint="@string/lbl_input_hint"
         android:maxLines="10"
-        android:digits="0123456789-\n "
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
