@@ -42,8 +42,6 @@ public class MainPresenter implements MainContract.Presenter {
             case ResultCode.ERROR_ROWS:
                 processError(resultCode);
                 break;
-            default:
-                processError(ResultCode.ERROR_STATE);
         }
     }
 

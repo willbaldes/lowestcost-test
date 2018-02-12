@@ -167,6 +167,18 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.path_tv)).check(matches(withText("")));
         onView(withId(R.id.valid_tv)).check(matches(withText("")));
         onView(withId(R.id.input_et)).check(matches(withText("")));
+
+        String error = getResourceString(R.string.error_input);
+        onView(withId(R.id.input_et)).perform(click());
+        onView(withId(R.id.input_et)).perform(typeText(prepareInputFromMatrix(Samples.SAMPLE_6_INPUT)), closeSoftKeyboard());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.error_tv)).check(matches(withText(error)));
+        onView(withId(R.id.reset)).perform(click());
+        onView(withId(R.id.error_tv)).check(matches(withText("")));
+        onView(withId(R.id.cost_tv)).check(matches(withText("")));
+        onView(withId(R.id.path_tv)).check(matches(withText("")));
+        onView(withId(R.id.valid_tv)).check(matches(withText("")));
+        onView(withId(R.id.input_et)).check(matches(withText("")));
     }
 
 

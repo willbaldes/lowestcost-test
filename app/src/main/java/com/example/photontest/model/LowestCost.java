@@ -71,6 +71,7 @@ public class LowestCost {
     private int findEntryPoint() {
         int index = -1;
         int min = DomainSpecs.MAX_COST;
+
         for (int i = 0; i < ROWS; i++) {
             if (costMatrix[i][0] < min) {
                 min = costMatrix[i][0];
@@ -106,10 +107,13 @@ public class LowestCost {
             for (int rows = 0; rows < ROWS; rows++) {
                 for (int cols = 0; cols < COLS; cols++) {
                     if(inputMatrix[rows][cols] instanceof String) {
+                        // Should execute when input comes from UI
                         costMatrix[rows][cols] = Integer.parseInt((String) inputMatrix[rows][cols]);
                     } else {
+                        // Should execute for direct testing
                         costMatrix[rows][cols] = (Integer) inputMatrix[rows][cols];
-                }   }
+                    }
+                }
             }
             return ResultCode.RESULT_OK;
         } catch (ClassCastException | NumberFormatException e) {

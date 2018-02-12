@@ -3,10 +3,7 @@ package com.example.photontest.ui;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     private static final String ROWS_DELIMITER = "\n";
     private static final String COLS_DELIMITER = " ";
-    private static final String TAG = MainActivity.class.getSimpleName() + "_TAG";
 
     @BindView(R.id.input_et) EditText inputET;
     @BindView(R.id.valid_tv) TextView validTV;
@@ -84,7 +80,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @OnClick(R.id.reset) void reset() {
-
+        inputET.setText("");
+        errorTV.setText("");
+        validTV.setText("");
+        costTV.setText("");
+        pathTV.setText("");
     }
 
     private Object[][] parseInput() {
@@ -95,14 +95,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         } else {
             String[] rows = userInput.split(ROWS_DELIMITER);
             int rowCount = rows.length;
-            Log.d(TAG, "parseInput: rows " + rowCount);
             int columnCount = rows[0].split(COLS_DELIMITER).length;
             input = new Object[rowCount][columnCount];
             for(int row = 0; row < rowCount; row++) {
                 String[] items = rows[row].split(COLS_DELIMITER);
                 for(int col = 0; col < columnCount; col++) {
                     input[row][col] = items[col];
-                    Log.d(TAG, "parseInput: " + items[col]);
                 }
             }
             return input;
