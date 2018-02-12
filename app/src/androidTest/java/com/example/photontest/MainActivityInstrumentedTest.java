@@ -25,6 +25,8 @@ public class MainActivityInstrumentedTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class);
 
+
+
     /**
      * Should validate the initial state of the screen
      * 1) Screen title
@@ -51,7 +53,7 @@ public class MainActivityInstrumentedTest {
     public void test_SubmitEmptyInputShouldShowError() {
         String emptyError = getResourceString(R.string.error_empty);
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.submit)).check(matches(not(isEnabled())));
+        onView(withId(R.id.submit)).check(matches(isEnabled()));
         onView(withId(R.id.error_tv)).check(matches(withText(emptyError)));
         onView(withId(R.id.reset)).check(matches(isEnabled()));
         onView(withId(R.id.submit)).check(matches(isEnabled()));

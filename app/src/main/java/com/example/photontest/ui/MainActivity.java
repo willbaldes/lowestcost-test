@@ -1,15 +1,21 @@
 package com.example.photontest.ui;
 
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.photontest.R;
 import com.example.photontest.app.PhotonApp;
 import com.example.photontest.di.components.DaggerMainViewComponent;
 import com.example.photontest.di.modules.MainViewModule;
 import com.example.photontest.model.Result;
+import com.example.photontest.util.EspressoIdlingResource;
 
 import javax.inject.Inject;
 
@@ -21,12 +27,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     private static final String ROWS_DELIMITER = "\n";
     private static final String COLS_DELIMITER = " ";
+    private static final String TAG = MainActivity.class.getSimpleName() + "_TAG";
 
     @BindView(R.id.input_et) EditText inputET;
     @BindView(R.id.valid_tv) TextView validTV;
     @BindView(R.id.cost_tv) TextView costTV;
     @BindView(R.id.path_tv) TextView pathTV;
     @BindView(R.id.error_tv) TextView errorTV;
+    @BindView(R.id.submit) Button submitBT;
+    @BindView(R.id.reset) Button resetBT;
 
     @Inject MainPresenter mainPresenter;
 
@@ -36,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initDagger();
+        initViews();
     }
 
     @Override
@@ -52,15 +62,21 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void showError(String error) {
+        submitBT.setEnabled(true);
         errorTV.setText(error);
+        errorTV.setVisibility(View.VISIBLE);
+        EspressoIdlingResource.decrement();
     }
 
     @Override
     public void showResult(Result result) {
-
+        submitBT.setEnabled(true);
     }
 
     @OnClick(R.id.submit) void calculate() {
+        EspressoIdlingResource.increment();
+        submitBT.setEnabled(false);
+        resetBT.setEnabled(true);
         mainPresenter.calculateLowestCost(parseInput());
     }
 
@@ -76,11 +92,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         } else {
             String[] rows = userInput.split(ROWS_DELIMITER);
             int rowCount = rows.length;
+            Log.d(TAG, "parseInput: rows " + rowCount);
             int columnCount = rows[0].split(COLS_DELIMITER).length;
             input = new Object[rowCount][columnCount];
             for(int row = 0; row < rowCount; row++) {
-                Object[] items = rows[row].split(COLS_DELIMITER);
-                System.arraycopy(items, 0, input[row], 0, columnCount);
+                String[] items = rows[row].split(COLS_DELIMITER);
+                for(int col = 0; col < columnCount; col++) {
+                    input[row][col] = items[col];
+                    Log.d(TAG, "parseInput: " + items[col]);
+                }
             }
             return input;
         }
@@ -95,4 +115,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 .inject(this);
     }
 
+    private void initViews() {
+        inputET.setRawInputType(Configuration.KEYBOARD_QWERTY);
+    }
 }
